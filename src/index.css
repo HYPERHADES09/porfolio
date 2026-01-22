@@ -1,0 +1,281 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Black & white, typography-forward */
+    --background: 0 0% 6%;
+    --foreground: 0 0% 96%;
+
+    --surface: 0 0% 8.5%;
+    --surface-foreground: 0 0% 96%;
+
+    --ink: 0 0% 98%;
+    --ink-muted: 0 0% 70%;
+
+    --hairline: 0 0% 16%;
+    --hairline-strong: 0 0% 24%;
+
+    --focus: 0 0% 96%;
+
+    --radius: 0.9rem;
+
+    /* Typography */
+    --font-sans: ui-sans-serif;
+    --font-display: ui-serif;
+    --font-mono: ui-monospace;
+
+    /* shadcn semantic tokens (mapped to monochrome) */
+    --card: var(--surface);
+    --card-foreground: var(--surface-foreground);
+
+    --popover: var(--surface);
+    --popover-foreground: var(--surface-foreground);
+
+    --primary: var(--foreground);
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: var(--foreground);
+
+    --muted: 0 0% 96%;
+    --muted-foreground: var(--ink-muted);
+
+    /* Selected card surface (requested ~ #737373) */
+    --selected: 0 0% 45%;
+
+    --accent: 0 0% 94.5%;
+    --accent-foreground: var(--foreground);
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: var(--hairline);
+    --input: var(--hairline);
+    --ring: var(--focus);
+
+    --sidebar-background: var(--background);
+    --sidebar-foreground: var(--foreground);
+    --sidebar-primary: var(--foreground);
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: var(--accent);
+    --sidebar-accent-foreground: var(--foreground);
+    --sidebar-border: var(--border);
+    --sidebar-ring: var(--ring);
+
+    /* Neon accent (HSL only) */
+    --neon-a: 190 100% 62%;
+    --neon-b: 292 100% 68%;
+    --neon-c: 42 100% 62%;
+  }
+
+  .dark {
+    /* Keep dark mode identical (this site is intentionally dark-first) */
+    --background: 0 0% 6%;
+    --foreground: 0 0% 96%;
+
+    --surface: 0 0% 8.5%;
+    --surface-foreground: 0 0% 96%;
+
+    --ink: 0 0% 98%;
+    --ink-muted: 0 0% 70%;
+
+    --hairline: 0 0% 16%;
+    --hairline-strong: 0 0% 24%;
+
+    --focus: 0 0% 96%;
+
+    --card: var(--surface);
+    --card-foreground: var(--surface-foreground);
+
+    --popover: var(--surface);
+    --popover-foreground: var(--surface-foreground);
+
+    --primary: var(--foreground);
+    --primary-foreground: 0 0% 6%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: var(--foreground);
+
+    --muted: 0 0% 12%;
+    --muted-foreground: var(--ink-muted);
+
+    /* Selected card surface (requested ~ #737373) */
+    --selected: 0 0% 45%;
+
+    --accent: 0 0% 12%;
+    --accent-foreground: var(--foreground);
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: var(--hairline);
+    --input: var(--hairline);
+    --ring: var(--focus);
+    --sidebar-background: var(--background);
+    --sidebar-foreground: var(--foreground);
+    --sidebar-primary: var(--foreground);
+    --sidebar-primary-foreground: 0 0% 6%;
+    --sidebar-accent: var(--accent);
+    --sidebar-accent-foreground: var(--foreground);
+    --sidebar-border: var(--border);
+    --sidebar-ring: var(--ring);
+
+    /* Neon accent (same in dark-first theme) */
+    --neon-a: 190 100% 62%;
+    --neon-b: 292 100% 68%;
+    --neon-c: 42 100% 62%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    overflow-x: hidden;
+    font-feature-settings: "ss01" 1, "ss02" 1, "cv11" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: hsl(var(--foreground) / 0.12);
+  }
+}
+
+@layer utilities {
+  .hairline {
+    box-shadow: 0 0 0 1px hsl(var(--border));
+  }
+
+  .hairline-strong {
+    box-shadow: 0 0 0 1px hsl(var(--hairline-strong));
+  }
+
+  .text-ink {
+    color: hsl(var(--ink));
+  }
+
+  .text-ink-muted {
+    color: hsl(var(--ink-muted));
+  }
+
+  .bg-surface {
+    background-color: hsl(var(--surface));
+  }
+
+  .bg-glass {
+    background-color: hsl(var(--background) / 0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .grain {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.06) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+
+  .type-hero {
+    @apply font-display tracking-tight;
+    letter-spacing: -0.03em;
+  }
+
+  .edge-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  }
+
+  .edge-glow-hover {
+    position: relative;
+  }
+
+  .edge-glow-hover::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 220ms ease;
+    background:
+      radial-gradient(900px 60px at 50% 0%, hsl(var(--foreground) / 0.16), transparent 70%),
+      radial-gradient(900px 60px at 50% 100%, hsl(var(--foreground) / 0.16), transparent 70%);
+  }
+
+  .edge-glow-hover:hover::after {
+    opacity: 1;
+  }
+
+  /* Toggleable neon hover effect: normal text until hover, then animated RGB-like gradient + glow */
+  @keyframes neon-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 200% 50%;
+    }
+  }
+
+  .neon-hover {
+    color: hsl(var(--foreground));
+    text-decoration: none;
+  }
+
+  .neon-hover:hover {
+    background-image: linear-gradient(
+      90deg,
+      hsl(var(--neon-a)),
+      hsl(var(--neon-b)),
+      hsl(var(--neon-c)),
+      hsl(var(--neon-a))
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: neon-shift 900ms linear infinite;
+    text-shadow:
+      0 0 20px hsl(var(--neon-a) / 0.28),
+      0 0 18px hsl(var(--neon-b) / 0.22),
+      0 0 14px hsl(var(--neon-c) / 0.18);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .neon-hover:hover {
+      animation: none;
+    }
+  }
+
+  /* Scroll reveal: used to animate sections in as they enter the viewport */
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 520ms ease,
+      transform 520ms ease;
+    will-change: opacity, transform;
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
