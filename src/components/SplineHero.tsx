@@ -32,10 +32,10 @@ export function SplineHero({ url }: { url: string }) {
       <spline-viewer
         url={url}
         loading-anim-type="none"
-        style={{ width: "100%", height: "100%", display: "block" }}
+        style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0, display: "block" }}
       />
       {/* Watermark cover */}
-      <div className="absolute bottom-4 right-4 h-16 w-40 bg-[#050505] z-40 pointer-events-none" />
+      <div className="absolute bottom-4 right-4 h-[59px] w-[150px] md:h-16 md:w-40 bg-[#050505] z-40 pointer-events-none" />
     </div>
   );
 }

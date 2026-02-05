@@ -14,9 +14,9 @@ type LinkPreviewProps = {
   quality?: number;
   layout?: "fixed" | "intrinsic" | "responsive" | "fill" | string;
 } & (
-  | { isStatic: true; imageSrc: string }
-  | { isStatic?: false; imageSrc?: never }
-);
+    | { isStatic: true; imageSrc: string }
+    | { isStatic?: false; imageSrc?: never }
+  );
 
 export function LinkPreview({
   children,
@@ -97,11 +97,13 @@ export function LinkPreview({
           onMouseMove={handleMouseMove}
           onMouseEnter={preload}
           onFocus={preload}
-          className={cn("story-link inline-flex items-baseline", className)}
+          onClick={(e) => {
+            // For mobile/touch, toggle the open state on click/tap
+            setOpen((prev) => !prev);
+          }}
+          className={cn("story-link inline-flex items-baseline cursor-pointer", className)}
         >
-          <a href={url} target="_blank" rel="noreferrer">
-            {children}
-          </a>
+          {children}
         </span>
       </HoverCardPrimitive.Trigger>
 

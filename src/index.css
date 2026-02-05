@@ -141,12 +141,15 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground antialiased;
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
     font-feature-settings: "ss01" 1, "ss02" 1, "cv11" 1;
   }
 
   html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
   }
 
   ::selection {
@@ -221,6 +224,7 @@ All colors MUST be HSL.
     0% {
       background-position: 0% 50%;
     }
+
     100% {
       background-position: 200% 50%;
     }
@@ -232,13 +236,11 @@ All colors MUST be HSL.
   }
 
   .neon-hover:hover {
-    background-image: linear-gradient(
-      90deg,
-      hsl(var(--neon-a)),
-      hsl(var(--neon-b)),
-      hsl(var(--neon-c)),
-      hsl(var(--neon-a))
-    );
+    background-image: linear-gradient(90deg,
+        hsl(var(--neon-a)),
+        hsl(var(--neon-b)),
+        hsl(var(--neon-c)),
+        hsl(var(--neon-a)));
     background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
